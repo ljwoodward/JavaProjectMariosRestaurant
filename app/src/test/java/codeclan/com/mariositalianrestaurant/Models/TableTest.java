@@ -48,4 +48,9 @@ public class TableTest {
         assertEquals("patron1 patron2 patron3 patron4 ", actual);
 
     }
+
+    @Test
+    public void testGetOrder() {
+
+    }
 }

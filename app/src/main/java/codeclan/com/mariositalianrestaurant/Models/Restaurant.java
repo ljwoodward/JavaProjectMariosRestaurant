@@ -31,6 +31,10 @@ public class Restaurant {
         return till;
     }
 
+    public void addToTill(float amount) {
+        this.till += amount;
+    }
+
     public ArrayList<Table> getTables() {
         return tables;
     }

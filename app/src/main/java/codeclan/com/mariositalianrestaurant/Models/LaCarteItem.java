@@ -6,4 +6,9 @@ package codeclan.com.mariositalianrestaurant.Models;
 
 interface LaCarteItem {
 
+    public String getName();
+    public float getPrice();
+
+
+//    public String getName();
 }

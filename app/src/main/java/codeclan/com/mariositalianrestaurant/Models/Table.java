@@ -40,8 +40,13 @@ class Table {
 
     }
 
-    public ArrayList<LaCarteItem> getOrder() {
-        return order;
+    public String getOrder() {
+        String orderString = "";
+
+        for(LaCarteItem menuItem : this.order) {
+            orderString += menuItem.getName() + "\n";
+        }
+        return orderString;
     }
 
     public int getNumberOfPatrons() {

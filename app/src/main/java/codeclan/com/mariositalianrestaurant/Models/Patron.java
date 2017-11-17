@@ -20,5 +20,8 @@ class Patron {
         return name;
     }
 
+    public void orderFromMenu(LaCarteItem item) {
+         this.order.add(item);
+    }
 
 }
