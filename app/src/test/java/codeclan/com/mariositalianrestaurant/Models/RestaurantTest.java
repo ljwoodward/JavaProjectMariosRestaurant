@@ -16,7 +16,7 @@ public class RestaurantTest {
 
 
     @Before
-    public void setUp() {
+    public void before() {
         table = new Table();
         menu = new LaCarte();
         restaurant = new Restaurant("Mario's Italian Restaurant", menu);

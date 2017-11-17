@@ -24,4 +24,12 @@ class Patron {
          this.order.add(item);
     }
 
+    public String getOrder() {
+         String orderList = "";
+         for(LaCarteItem menuItem : this.order) {
+             orderList += menuItem.getName() + "\n";
+         }
+         return orderList;
+    }
+
 }
