@@ -27,16 +27,18 @@ public class Restaurant {
         this.tables.add(table);
     }
 
-    public double getTill() {
-        return till;
-    }
-
     public void addToTill(double amount) {
         this.till += amount;
     }
 
-    public ArrayList<Table> getTables() {
-        return tables;
+    public String getTables() {
+        int count = 1;
+        String tableList = "";
+        for(Table table : this.tables) {
+            tableList += "Table " + Integer.toString(count) + ":\n";
+            tableList += table.getOrder() + "\n\n";
+            count++;
+        }
     }
 
 
