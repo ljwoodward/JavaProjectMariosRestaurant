@@ -11,9 +11,13 @@ class Patron {
     private String name;
     private ArrayList<LaCarteItem> order;
 
-    public Patron(String name) {
+     public Patron(String name) {
         this.name = name;
         this.order = new ArrayList<LaCarteItem>();
+    }
+
+    public String getName() {
+        return name;
     }
 
 

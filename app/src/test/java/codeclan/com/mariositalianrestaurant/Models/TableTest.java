@@ -37,4 +37,15 @@ public class TableTest {
         int actual = table2.getNumberOfPatrons();
         assertEquals(4, actual);
     }
+
+    @Test
+    public void testPatronsAreDynamicallyNamed() {
+        String actual = "";
+        for(Patron patron : table2.patrons){
+            String name = patron.getName();
+            actual += name + " ";
+        }
+        assertEquals("patron1 patron2 patron3 patron4 ", actual);
+
+    }
 }
