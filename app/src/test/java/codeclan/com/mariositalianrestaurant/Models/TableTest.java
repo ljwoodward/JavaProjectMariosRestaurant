@@ -19,6 +19,7 @@ public class TableTest {
     @Before
     public void setUp() {
         table = new Table();
+        table2 = new Table(4);
     }
 
     @Test
@@ -30,9 +31,10 @@ public class TableTest {
 
     }
 
-//    @Test
-//    public void testNumberOfPatrons() {
-//        int actual = table.getNumberOfPatrons();
-//        assertEquals(4, actual);
-//    }
+
+    @Test
+    public void testNumberOfPatrons() {
+        int actual = table2.getNumberOfPatrons();
+        assertEquals(4, actual);
+    }
 }

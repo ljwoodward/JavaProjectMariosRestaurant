@@ -12,22 +12,32 @@ class Table {
 
     protected ArrayList<Patron> patrons;
     private ArrayList<LaCarteItem> order;
-
-    public Table(int numberOfPatrons) {
-
-        int number = 0;
-        while (number < numberOfPatrons) {
-            String designator = Integer.toString(number);
-            Patron patron = new Patron("patron" + designator);
-            this.patrons.add(patron);
-            number += 1;
-        }
-
-    }
+    private int numberOfPatrons;
 
     public Table() {
         this.patrons = new ArrayList<Patron>();
         this.order = new ArrayList<LaCarteItem>();
+        this.numberOfPatrons = 0;
+    }
+
+    public void addPatronToTable(Patron patron) {
+        this.patrons.add(patron);
+    }
+
+    public Table(int numberOfPatrons) {
+
+        this.patrons = new ArrayList<Patron>();
+        this.order = new ArrayList<LaCarteItem>();
+        this.numberOfPatrons = numberOfPatrons;
+
+        for(int number = 1; number < numberOfPatrons + 1; number++) {
+            String designator = Integer.toString(number);
+            Patron patron = new Patron("patron" + designator);
+            this.addPatronToTable(patron);
+        }
+
+
+
     }
 
     public ArrayList<LaCarteItem> getOrder() {
@@ -36,10 +46,6 @@ class Table {
 
     public int getNumberOfPatrons() {
         return patrons.size();
-    }
-
-    public void addPatronToTable(Patron patron) {
-        this.patrons.add(patron);
     }
 
 
