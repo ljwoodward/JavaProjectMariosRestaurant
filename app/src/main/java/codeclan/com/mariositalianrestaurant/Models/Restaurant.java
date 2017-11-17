@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Restaurant {
 
     private String name;
-    private float till;
+    private double till;
     private ArrayList<Table> tables;
     private LaCarte menu;
 
@@ -27,11 +27,11 @@ public class Restaurant {
         this.tables.add(table);
     }
 
-    public float getTill() {
+    public double getTill() {
         return till;
     }
 
-    public void addToTill(float amount) {
+    public void addToTill(double amount) {
         this.till += amount;
     }
 
