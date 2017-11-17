@@ -14,19 +14,27 @@ public class Restaurant {
     private float till;
     private ArrayList<Table> tables;
     private LaCarte menu;
-    private int maxCapacity;
 
-    public Restaurant(String name, LaCarte menu, int maxCapacity) {
+
+    public Restaurant(String name, LaCarte menu) {
         this.name = name;
         this.till = 0;
         this.tables = new ArrayList<>();
         this.menu = menu;
-        this.maxCapacity = maxCapacity;
     }
 
     public void newTable(Table table) {
         this.tables.add(table);
     }
+
+    public float getTill() {
+        return till;
+    }
+
+    public ArrayList<Table> getTables() {
+        return tables;
+    }
+
 
 
 
