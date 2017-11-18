@@ -31,7 +31,15 @@ public class Restaurant {
         this.till += amount;
     }
 
-    public String getTables() {
+    public double getTill() {
+        return this.till;
+    }
+
+    public ArrayList<Table> getTables() {
+        return this.tables;
+    }
+
+    public String getTablesList() {
         int count = 1;
         String tableList = "";
         for(Table table : this.tables) {
@@ -39,6 +47,7 @@ public class Restaurant {
             tableList += table.getOrder() + "\n\n";
             count++;
         }
+        return tableList;
     }
 
 

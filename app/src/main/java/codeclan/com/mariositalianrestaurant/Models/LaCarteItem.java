@@ -18,4 +18,9 @@ public abstract class LaCarteItem {
     public String getName() {
         return name;
     }
+
+    public double getPrice() {
+        return this.price;
+    }
 }
+
