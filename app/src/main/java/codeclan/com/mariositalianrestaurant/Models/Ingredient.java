@@ -7,8 +7,11 @@ package codeclan.com.mariositalianrestaurant.Models;
 class Ingredient {
 
     private String name;
+    private int availablePortions;
 
-    public Ingredient(String name) {
+    public Ingredient(String name, int availablePortions) {
         this.name = name;
+        this.availablePortions = availablePortions;
     }
+
 }

@@ -20,11 +20,15 @@ class Patron {
         return name;
     }
 
+    public ArrayList getOrder() {
+         return order;
+    }
+
     public void orderFromMenu(LaCarteItem item) {
          this.order.add(item);
     }
 
-    public String getOrder() {
+    public String getOrderList() {
          String orderList = "";
          for(LaCarteItem menuItem : this.order) {
              orderList += menuItem.getName() + "\n";
