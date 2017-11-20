@@ -78,4 +78,18 @@ public class RestaurantTest {
         double actual = dish1.getPrice();
         assertEquals(10.99, actual, 0);
     }
+
+    @Test
+    public void testClearTableRemoveTable() {
+        restaurant.clearTable(table1);
+        int actual = restaurant.getTables().size();
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void testClearTableTillUpdates() {
+        restaurant.clearTable(table1);
+        double actual = restaurant.getTill();
+        assertEquals(20.98, actual, 0);
+    }
 }

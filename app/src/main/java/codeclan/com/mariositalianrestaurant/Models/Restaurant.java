@@ -52,6 +52,9 @@ public class Restaurant {
     }
 
 
-
-
+    public void clearTable(Table table) {
+        double total = table.getTotalBill();
+        this.till += total;
+        this.tables.remove(table);
+    }
 }

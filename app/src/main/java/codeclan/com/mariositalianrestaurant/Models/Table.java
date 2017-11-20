@@ -61,8 +61,16 @@ class Table {
         return patrons.size();
     }
 
-
     public String getName() {
         return name;
+    }
+
+    public double getTotalBill() {
+        double total = 0;
+        for (LaCarteItem menuItem : this.order) {
+            double amount = menuItem.getPrice();
+            total += amount;
+        }
+        return total;
     }
 }
