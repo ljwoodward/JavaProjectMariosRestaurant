@@ -44,9 +44,15 @@ class Patron {
 //    }
 
 
-    public void orderFromMenu(LaCarteItem item) {
+
+
+    public void orderDishFromMenu(Dish item) {
          this.order.add(item);
          this.table.addToTableOrder(item);
+         for (Ingredient ingredient : item.ingredients) {
+             int newPortions = ingredient.getAvailablePortions() - 1;
+             ingredient.setAvailablePortions(newPortions);
+         }
     }
 
     public String getOrderList() {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Dish extends LaCarteItem {
     private String name;
     private double price;
-    private ArrayList<Ingredient> ingredients;
+    protected ArrayList<Ingredient> ingredients;
 
     public Dish(String name, double price) {
         super(name, price);
@@ -17,7 +17,7 @@ public class Dish extends LaCarteItem {
     }
 
 
-    public String getIngredients() {
+    public String getIngredientsName() {
         String ingredientList = "";
         for(Ingredient ingredient : this.ingredients){
             ingredientList += ingredient.getName() + ", ";

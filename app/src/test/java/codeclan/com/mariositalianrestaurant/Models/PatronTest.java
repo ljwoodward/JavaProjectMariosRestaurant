@@ -1,8 +1,5 @@
 package codeclan.com.mariositalianrestaurant.Models;
 
-import android.app.ActionBar;
-import android.view.Menu;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,8 +15,8 @@ public class PatronTest {
     LaCarte menu;
     Table table;
     Patron patron;
-    LaCarteItem menuItem1;
-    LaCarteItem menuItem2;
+    Dish menuItem1;
+    Dish menuItem2;
 
 
 
@@ -36,17 +33,24 @@ public class PatronTest {
     }
 
     @Test
+    public void testGetName(){
+        String actual = patron.getName();
+        assertEquals("patron", actual);
+    }
+
+    @Test
     public void testPatronCanOrder() {
-        patron.orderFromMenu(menuItem1);
+        patron.orderDishFromMenu(menuItem1);
         int actual = patron.getOrder().size();
         assertEquals(1, actual);
     }
 
     @Test
     public void testGetOrderList() {
-        patron.orderFromMenu(menuItem1);
-        patron.orderFromMenu(menuItem2);
+        patron.orderDishFromMenu(menuItem1);
+        patron.orderDishFromMenu(menuItem2);
         String actual = patron.getOrderList();
         assertEquals("Spaghetti Bolognese\nBruschetta\n", actual);
     }
+
 }

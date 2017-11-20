@@ -35,6 +35,9 @@ public class RestaurantTest {
         table1.addPatronToTable(patron2);
         table2.addPatronToTable(patron3);
         menu = new LaCarte();
+        ingredient1 = new Ingredient("Mince", 12);
+        ingredient2 = new Ingredient("Spaghetti", 80);
+        ingredient3 = new Ingredient("Pancetta", 4);
         dish1 = new Dish("Spaghetti Bolognese", 10.99);
         dish1.addIngredient(ingredient1);
         dish1.addIngredient(ingredient2);
@@ -43,12 +46,9 @@ public class RestaurantTest {
         dish2.addIngredient(ingredient3);
         menu.addToMenu(dish1);
         menu.addToMenu(dish2);
-        ingredient1 = new Ingredient("Mince", 12);
-        ingredient2 = new Ingredient("Spaghetti", 80);
-        ingredient3 = new Ingredient("Pancetta", 4);
-        patron1.orderFromMenu(dish1);
-        patron2.orderFromMenu(dish2);
-        patron3.orderFromMenu(dish2);
+        patron1.orderDishFromMenu(dish1);
+        patron2.orderDishFromMenu(dish2);
+        patron3.orderDishFromMenu(dish2);
 
     }
 
@@ -73,5 +73,9 @@ public class RestaurantTest {
         assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n\nTable 1:\nSpaghetti Carbonara\n\n", actual);
     }
 
-
+    @Test
+    public void testGetDishPrice() {
+        double actual = dish1.getPrice();
+        assertEquals(10.99, actual, 0);
+    }
 }

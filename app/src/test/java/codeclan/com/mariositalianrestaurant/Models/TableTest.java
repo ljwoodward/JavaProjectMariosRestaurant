@@ -1,7 +1,5 @@
 package codeclan.com.mariositalianrestaurant.Models;
 
-import android.view.Menu;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,10 +40,10 @@ public class TableTest {
         dish2 = new Dish("Spaghetti Carbonara", 10.99);
         dish1.addIngredient(ingredient1);
         dish1.addIngredient(ingredient2);
-        dish2.addIngredient(ingredient2);
+        dish2.addIngredient(ingredient1);
         dish2.addIngredient(ingredient3);
-        patron1.orderFromMenu(dish1);
-        patron2.orderFromMenu(dish2);
+        patron1.orderDishFromMenu(dish1);
+        patron2.orderDishFromMenu(dish2);
     }
 
     @Test
@@ -83,14 +81,21 @@ public class TableTest {
 
     @Test
     public void testAddToTableOrder() {
-        patron1.orderFromMenu(dish2);
+        patron1.orderDishFromMenu(dish2);
         String actual = table1.getOrderList();
         assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n", actual);
     }
 
     @Test
     public void testGetIngredients() {
-        String actual = dish1.getIngredients();
+        String actual = dish1.getIngredientsName();
         assertEquals("Spaghetti, Mince, ", actual);
     }
+
+    @Test
+    public void testAvailablePortions() {
+        int actual = ingredient1.getAvailablePortions();
+        assertEquals(48, actual);
+    }
+
 }
