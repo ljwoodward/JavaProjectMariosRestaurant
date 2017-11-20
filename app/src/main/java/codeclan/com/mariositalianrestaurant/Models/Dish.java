@@ -17,8 +17,12 @@ public class Dish extends LaCarteItem {
     }
 
 
-    public ArrayList<Ingredient> getIngredients() {
-        return ingredients;
+    public String getIngredients() {
+        String ingredientList = "";
+        for(Ingredient ingredient : this.ingredients){
+            ingredientList += ingredient.getName() + ", ";
+        }
+        return ingredientList;
     }
 
     public void addIngredient(Ingredient ingredient) {

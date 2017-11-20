@@ -23,8 +23,10 @@ public class Restaurant {
         this.menu = menu;
     }
 
-    public void newTable(Table table) {
+    public Table newTable() {
+        Table table = new Table(this);
         this.tables.add(table);
+        return table;
     }
 
     public void addToTill(double amount) {
@@ -43,8 +45,7 @@ public class Restaurant {
         int count = 1;
         String tableList = "";
         for(Table table : this.tables) {
-            tableList += table.getName()+ ":\n";
-            tableList += table.getOrderList() + "\n\n";
+            tableList += table.getOrderList() + "\n";
             count++;
         }
         return tableList;

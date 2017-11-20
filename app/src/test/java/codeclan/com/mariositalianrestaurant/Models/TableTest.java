@@ -82,9 +82,15 @@ public class TableTest {
     }
 
     @Test
-    public void testAddToTableOrder(){
+    public void testAddToTableOrder() {
         patron1.orderFromMenu(dish2);
         String actual = table1.getOrderList();
         assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n", actual);
+    }
+
+    @Test
+    public void testGetIngredients() {
+        String actual = dish1.getIngredients();
+        assertEquals("Spaghetti, Mince, ", actual);
     }
 }

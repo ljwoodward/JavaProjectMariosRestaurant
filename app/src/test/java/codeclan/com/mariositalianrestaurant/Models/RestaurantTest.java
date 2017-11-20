@@ -26,10 +26,8 @@ public class RestaurantTest {
     @Before
     public void before() {
         restaurant = new Restaurant("Mario's Italian Restaurant", menu);
-        table1 = new Table(restaurant);
-        table2 = new Table(restaurant);
-        restaurant.newTable(table1);
-        restaurant.newTable(table2);
+        table1 = restaurant.newTable();
+        table2 = restaurant.newTable();
         patron1 = new Patron("Rutger", restaurant);
         patron2 = new Patron("Wilhemina", restaurant);
         patron3 = new Patron("Gogarian", restaurant);
@@ -56,7 +54,7 @@ public class RestaurantTest {
 
     @Test
     public void testNewTable() {
-        restaurant.newTable(new Table(restaurant));
+        restaurant.newTable();
         int actual = restaurant.getTables().size();
         assertEquals(3, actual);
     }
@@ -71,9 +69,8 @@ public class RestaurantTest {
 
     @Test
     public void testGetTablesList() {
-
         String actual = restaurant.getTablesList();
-        assertEquals("Table1", actual);
+        assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n\nTable 1:\nSpaghetti Carbonara\n\n", actual);
     }
 
 

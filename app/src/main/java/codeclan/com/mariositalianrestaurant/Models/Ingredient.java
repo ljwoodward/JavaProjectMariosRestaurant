@@ -14,4 +14,15 @@ class Ingredient {
         this.availablePortions = availablePortions;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAvailablePortions() {
+        return availablePortions;
+    }
+
+    public void setAvailablePortions(int availablePortions) {
+        this.availablePortions = availablePortions;
+    }
 }
