@@ -73,4 +73,16 @@ class Table {
         }
         return total;
     }
+
+
+    public double splitBillEqually() {
+        double total = this.getTotalBill() / this.getNumberOfPatrons();
+        String string = Double.toString(total);
+        String anotherString = string.substring(0, 4);
+        Double splitAmount = Double.parseDouble(anotherString);
+        splitAmount += 0.01;
+        return splitAmount;
+    }
+
+
 }

@@ -17,11 +17,13 @@ public class TableTest {
     Table table2;
     Patron patron1;
     Patron patron2;
+    Patron patron3;
     Ingredient ingredient1;
     Ingredient ingredient2;
     Ingredient ingredient3;
     Dish dish1;
     Dish dish2;
+    Dish dish3;
 
     @Before
     public void setUp() {
@@ -31,19 +33,23 @@ public class TableTest {
         table2 = new Table(restaurant);
         patron1 = new Patron("Duncan", restaurant);
         patron2 = new Patron("Rita", restaurant);
+        patron3 = new Patron("Brian", restaurant);
         table1.addPatronToTable(patron1);
         table2.addPatronToTable(patron2);
+        table1.addPatronToTable(patron3);
         ingredient1 = new Ingredient("Spaghetti", 50);
         ingredient2 = new Ingredient("Mince", 9);
         ingredient3 = new Ingredient("Pancetta", 1);
         dish1 = new Dish("Spaghetti Bolognese", 9.99);
         dish2 = new Dish("Spaghetti Carbonara", 10.99);
+        dish3 = new Dish("Garlic Bread", 2.02);
         dish1.addIngredient(ingredient1);
         dish1.addIngredient(ingredient2);
         dish2.addIngredient(ingredient1);
         dish2.addIngredient(ingredient3);
         patron1.orderDishFromMenu(dish1);
         patron2.orderDishFromMenu(dish2);
+        patron3.orderDishFromMenu(dish2);
     }
 
     @Test
@@ -98,4 +104,12 @@ public class TableTest {
         assertEquals(48, actual);
     }
 
+    @Test
+    public void testSplitBillEqually() {
+        Patron patron = new Patron("Rumpole", restaurant);
+        table1.addPatronToTable(patron);
+        patron1.orderDishFromMenu(dish3);
+        double actual = table1.splitBillEqually();
+        assertEquals(7.66, actual, 0.01);
+    }
 }

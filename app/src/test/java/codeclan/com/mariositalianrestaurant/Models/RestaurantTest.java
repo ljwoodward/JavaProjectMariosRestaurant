@@ -92,4 +92,6 @@ public class RestaurantTest {
         double actual = restaurant.getTill();
         assertEquals(20.98, actual, 0);
     }
+
+
 }
