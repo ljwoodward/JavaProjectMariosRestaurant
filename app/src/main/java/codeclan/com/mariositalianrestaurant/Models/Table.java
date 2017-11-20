@@ -12,36 +12,44 @@ class Table {
 
     protected ArrayList<Patron> patrons;
     private ArrayList<LaCarteItem> order;
-    private int numberOfPatrons;
+    private Restaurant restaurant;
+    private String name;
 
-    public Table() {
+    public Table(Restaurant restaurant) {
         this.patrons = new ArrayList<Patron>();
         this.order = new ArrayList<LaCarteItem>();
-        this.numberOfPatrons = 0;
+        this.restaurant = restaurant;
+
+        int tableNumber = this.restaurant.getTables().size();
+        String tableName = "Table " + Integer.toString(tableNumber);
+        this.name = tableName;
     }
 
+
+//    public Table(int numberOfPatrons) {
+//
+//        this.patrons = new ArrayList<Patron>();
+//        this.order = new ArrayList<LaCarteItem>();
+//        this.numberOfPatrons = numberOfPatrons;
+//
+//        for(int number = 1; number < numberOfPatrons + 1; number++) {
+//            String designator = Integer.toString(number);
+//            Patron patron = new Patron("patron" + designator);
+//            this.addPatronToTable(patron);
+//        }
+//
+//}
     public void addPatronToTable(Patron patron) {
         this.patrons.add(patron);
+        patron.setTable(this);
     }
 
-    public Table(int numberOfPatrons) {
-
-        this.patrons = new ArrayList<Patron>();
-        this.order = new ArrayList<LaCarteItem>();
-        this.numberOfPatrons = numberOfPatrons;
-
-        for(int number = 1; number < numberOfPatrons + 1; number++) {
-            String designator = Integer.toString(number);
-            Patron patron = new Patron("patron" + designator);
-            this.addPatronToTable(patron);
-        }
-
-
-
+    public void addToTableOrder(LaCarteItem menuItem) {
+        this.order.add(menuItem);
     }
 
-    public String getOrder() {
-        String orderString = "";
+    public String getOrderList() {
+        String orderString = this.getName() + ":\n";
 
         for(LaCarteItem menuItem : this.order) {
             orderString += menuItem.getName() + "\n";
@@ -54,5 +62,7 @@ class Table {
     }
 
 
-
+    public String getName() {
+        return name;
+    }
 }

@@ -43,8 +43,8 @@ public class Restaurant {
         int count = 1;
         String tableList = "";
         for(Table table : this.tables) {
-            tableList += "Table " + Integer.toString(count) + ":\n";
-            tableList += table.getOrder() + "\n\n";
+            tableList += table.getName()+ ":\n";
+            tableList += table.getOrderList() + "\n\n";
             count++;
         }
         return tableList;
