@@ -14,13 +14,15 @@ public class Restaurant {
     private double till;
     private ArrayList<Table> tables;
     private LaCarte menu;
+    private Kitchen kitchen;
 
 
-    public Restaurant(String name, LaCarte menu) {
+    public Restaurant(String name) {
         this.name = name;
         this.till = 0;
         this.tables = new ArrayList<>();
-        this.menu = menu;
+        this.menu = new LaCarte();
+        this.kitchen = new Kitchen();
     }
 
     public Table newTable() {
