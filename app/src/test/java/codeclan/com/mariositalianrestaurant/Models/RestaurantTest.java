@@ -28,12 +28,9 @@ public class RestaurantTest {
         restaurant = new Restaurant("Mario's Italian Restaurant", menu);
         table1 = restaurant.newTable();
         table2 = restaurant.newTable();
-        patron1 = new Patron("Rutger");
-        patron2 = new Patron("Wilhemina");
-        patron3 = new Patron("Gogarian");
-        table1.addPatronToTable(patron1);
-        table1.addPatronToTable(patron2);
-        table2.addPatronToTable(patron3);
+        patron1 = table1.newPatron();
+        patron2 = table2.newPatron();
+        patron3 = table1.newPatron();
         menu = new LaCarte();
         ingredient1 = new Ingredient("Mince", 12);
         ingredient2 = new Ingredient("Spaghetti", 80);

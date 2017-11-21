@@ -82,6 +82,19 @@ class Table {
     }
 
 
+    public String splitBillByPatron() {
+        String splitBill = "";
+        for (Patron patron : this.patrons) {
+            splitBill += patron.getName() + ": " + Double.toString(patron.getCostOfOrder()) + "\n";
+        }
+        return splitBill;
+    }
 
-
+    public Patron newPatron() {
+        int patronNumber = this.patrons.size() +1;
+        String patronName = "Patron " + Integer.toString(patronNumber);
+        Patron patron = new Patron(patronName);
+        this.patrons.add(patron);
+        return patron;
+    }
 }

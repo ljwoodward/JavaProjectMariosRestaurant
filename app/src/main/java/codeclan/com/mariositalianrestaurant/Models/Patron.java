@@ -53,4 +53,11 @@ class Patron {
          return orderList;
     }
 
+    public double getCostOfOrder() {
+        double cost = 0;
+        for (LaCarteItem menuItem : this.order) {
+            cost += menuItem.getPrice();
+        }
+        return cost;
+    }
 }
