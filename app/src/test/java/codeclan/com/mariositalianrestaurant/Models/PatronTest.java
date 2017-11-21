@@ -28,7 +28,7 @@ public class PatronTest {
         table = new Table(restaurant);
         menuItem1 = new Dish("Spaghetti Bolognese", 10.99);
         menuItem2= new Dish("Bruschetta", 4.50);
-        patron = new Patron("patron", restaurant);
+        patron = new Patron("patron");
         table.addPatronToTable(patron);
     }
 

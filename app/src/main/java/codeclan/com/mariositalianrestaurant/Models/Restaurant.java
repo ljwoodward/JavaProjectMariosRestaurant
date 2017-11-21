@@ -45,6 +45,7 @@ public class Restaurant {
         int count = 1;
         String tableList = "";
         for(Table table : this.tables) {
+            table.tableOrder();
             tableList += table.getOrderList() + "\n";
             count++;
         }
@@ -53,6 +54,7 @@ public class Restaurant {
 
 
     public void clearTable(Table table) {
+        table.tableOrder();
         double total = table.getTotalBill();
         this.till += total;
         this.tables.remove(table);

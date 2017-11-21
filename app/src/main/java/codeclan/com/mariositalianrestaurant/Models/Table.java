@@ -2,6 +2,7 @@ package codeclan.com.mariositalianrestaurant.Models;
 
 import android.view.MenuItem;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -16,8 +17,8 @@ class Table {
     private String name;
 
     public Table(Restaurant restaurant) {
-        this.patrons = new ArrayList<Patron>();
-        this.order = new ArrayList<LaCarteItem>();
+        this.patrons = new ArrayList<>();
+        this.order = new ArrayList<>();
         this.restaurant = restaurant;
 
         int tableNumber = this.restaurant.getTables().size();
@@ -41,14 +42,9 @@ class Table {
 //}
     public void addPatronToTable(Patron patron) {
         this.patrons.add(patron);
-        patron.setTable(this);
     }
 
-    public void addToTableOrder(LaCarteItem menuItem) {
-        this.order.add(menuItem);
-    }
-
-    public String getOrderList() {
+     public String getOrderList() {
         String orderString = this.getName() + ":\n";
 
         for(LaCarteItem menuItem : this.order) {
@@ -65,6 +61,14 @@ class Table {
         return name;
     }
 
+    public void tableOrder() {
+        for(Patron patron : this.patrons) {
+            for (LaCarteItem menuItem : patron.getOrder()) {
+                this.order.add(menuItem);
+            }
+        }
+    }
+
     public double getTotalBill() {
         double total = 0;
         for (LaCarteItem menuItem : this.order) {
@@ -77,12 +81,12 @@ class Table {
 
     public double splitBillEqually() {
         double total = this.getTotalBill() / this.getNumberOfPatrons();
-        String string = Double.toString(total);
-        String anotherString = string.substring(0, 4);
-        Double splitAmount = Double.parseDouble(anotherString);
+        double splitAmount =  Math.round(total * 100.0)/100.0;
         splitAmount += 0.01;
         return splitAmount;
     }
+
+
 
 
 }

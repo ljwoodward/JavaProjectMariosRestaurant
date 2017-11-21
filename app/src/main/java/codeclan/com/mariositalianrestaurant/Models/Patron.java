@@ -10,27 +10,18 @@ class Patron {
 
     private String name;
     private ArrayList<LaCarteItem> order;
-    private Restaurant restaurant;
-    private Table table;
 
 
-    public Patron(String name, Restaurant restaurant) {
+    public Patron(String name) {
         this.name = name;
-        this.order = new ArrayList<LaCarteItem>();
-        this.restaurant = restaurant;
-        this.table = null;
+        this.order = new ArrayList<>();
     }
-
-    public void setTable(Table table) {
-        this.table = table;
-    }
-
 
     public String getName() {
         return name;
     }
 
-    public ArrayList getOrder() {
+    public ArrayList<LaCarteItem> getOrder() {
          return order;
     }
 
@@ -48,7 +39,6 @@ class Patron {
 
     public void orderDishFromMenu(Dish item) {
          this.order.add(item);
-         this.table.addToTableOrder(item);
          for (Ingredient ingredient : item.ingredients) {
              int newPortions = ingredient.getAvailablePortions() - 1;
              ingredient.setAvailablePortions(newPortions);

@@ -27,13 +27,13 @@ public class TableTest {
 
     @Before
     public void setUp() {
-        LaCarte menu = new LaCarte();
+        menu = new LaCarte();
         restaurant = new Restaurant("Mario's", menu);
         table1 = new Table(restaurant);
         table2 = new Table(restaurant);
-        patron1 = new Patron("Duncan", restaurant);
-        patron2 = new Patron("Rita", restaurant);
-        patron3 = new Patron("Brian", restaurant);
+        patron1 = new Patron("Duncan");
+        patron2 = new Patron("Rita");
+        patron3 = new Patron("Brian");
         table1.addPatronToTable(patron1);
         table2.addPatronToTable(patron2);
         table1.addPatronToTable(patron3);
@@ -47,16 +47,20 @@ public class TableTest {
         dish1.addIngredient(ingredient2);
         dish2.addIngredient(ingredient1);
         dish2.addIngredient(ingredient3);
+        menu.addToMenu(dish1);
+        menu.addToMenu(dish2);
+        menu.addToMenu(dish3);
         patron1.orderDishFromMenu(dish1);
         patron2.orderDishFromMenu(dish2);
         patron3.orderDishFromMenu(dish2);
+        //table1 has 2 patrons and 2 dishes (bolognese and carbonara: 20.98)
     }
 
     @Test
     public void testAddPatronToTable() {
-        table1.addPatronToTable(new Patron("Bolingbroke", restaurant));
+        table1.addPatronToTable(new Patron("Bolingbroke"));
         int actual = table1.getNumberOfPatrons();
-        assertEquals(2, actual);
+        assertEquals(3, actual);
 
 
     }
@@ -64,8 +68,8 @@ public class TableTest {
 
     @Test
     public void testNumberOfPatrons() {
-        int actual = table2.getNumberOfPatrons();
-        assertEquals(1, actual);
+        int actual = table1.getNumberOfPatrons();
+        assertEquals(2, actual);
     }
 
 //    @Test
@@ -81,15 +85,17 @@ public class TableTest {
 
     @Test
     public void testGetOrder() {
+        table1.tableOrder();
         String actual = table1.getOrderList();
-        assertEquals("Table 0:\nSpaghetti Bolognese\n", actual);
+        assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n", actual);
     }
 
     @Test
     public void testAddToTableOrder() {
         patron1.orderDishFromMenu(dish2);
+        table1.tableOrder();
         String actual = table1.getOrderList();
-        assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n", actual);
+        assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\nSpaghetti Carbonara\n", actual);
     }
 
     @Test
@@ -101,15 +107,22 @@ public class TableTest {
     @Test
     public void testAvailablePortions() {
         int actual = ingredient1.getAvailablePortions();
-        assertEquals(48, actual);
+        assertEquals(47, actual);
     }
 
     @Test
+    public void testGetTotalBill() {
+        table1.tableOrder();
+        double actual = table1.getTotalBill();
+        assertEquals(20.98, actual, 0);
+    }
+    @Test
     public void testSplitBillEqually() {
-        Patron patron = new Patron("Rumpole", restaurant);
+        Patron patron = new Patron("Rumpole");
         table1.addPatronToTable(patron);
-        patron1.orderDishFromMenu(dish3);
+        patron.orderDishFromMenu(dish3);
+        table1.tableOrder();
         double actual = table1.splitBillEqually();
-        assertEquals(7.66, actual, 0.01);
+        assertEquals(7.67, actual, 0.01);
     }
 }

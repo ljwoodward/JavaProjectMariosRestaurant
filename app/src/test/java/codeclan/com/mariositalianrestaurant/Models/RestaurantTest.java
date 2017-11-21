@@ -28,9 +28,9 @@ public class RestaurantTest {
         restaurant = new Restaurant("Mario's Italian Restaurant", menu);
         table1 = restaurant.newTable();
         table2 = restaurant.newTable();
-        patron1 = new Patron("Rutger", restaurant);
-        patron2 = new Patron("Wilhemina", restaurant);
-        patron3 = new Patron("Gogarian", restaurant);
+        patron1 = new Patron("Rutger");
+        patron2 = new Patron("Wilhemina");
+        patron3 = new Patron("Gogarian");
         table1.addPatronToTable(patron1);
         table1.addPatronToTable(patron2);
         table2.addPatronToTable(patron3);
@@ -69,6 +69,7 @@ public class RestaurantTest {
 
     @Test
     public void testGetTablesList() {
+
         String actual = restaurant.getTablesList();
         assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n\nTable 1:\nSpaghetti Carbonara\n\n", actual);
     }
