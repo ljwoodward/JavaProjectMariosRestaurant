@@ -8,14 +8,21 @@ import java.util.ArrayList;
 
 public class Kitchen {
 
-    private ArrayList<Ingredient> pantry;
+     private ArrayList<Ingredient> pantry;
 
     public Kitchen() {
         this.pantry = new ArrayList<>();
     }
 
+
+    public ArrayList<Ingredient> getPantry() {
+        return pantry;
+    }
+
     public void addToPantry(Ingredient ingredient) {
         this.pantry.add(ingredient);
     }
+
+
 
 }

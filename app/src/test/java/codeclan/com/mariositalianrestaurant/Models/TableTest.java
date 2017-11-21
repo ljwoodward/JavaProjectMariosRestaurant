@@ -30,7 +30,7 @@ public class TableTest {
     @Before
     public void setUp() {
         menu = new LaCarte();
-        restaurant = new Restaurant("Mario's", menu);
+        restaurant = new Restaurant("Mario's");
         table1 = restaurant.newTable();
         table2 = restaurant.newTable();
         patron1 = table1.newPatron();

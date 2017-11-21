@@ -25,7 +25,7 @@ public class RestaurantTest {
 
     @Before
     public void before() {
-        restaurant = new Restaurant("Mario's Italian Restaurant", menu);
+        restaurant = new Restaurant("Mario's Italian Restaurant");
         table1 = restaurant.newTable();
         table2 = restaurant.newTable();
         patron1 = table1.newPatron();

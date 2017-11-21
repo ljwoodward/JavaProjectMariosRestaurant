@@ -23,7 +23,7 @@ public class PatronTest {
 
     @Before
     public void before() {
-        restaurant = new Restaurant("Mario's", menu);
+        restaurant = new Restaurant("Mario's");
         menu = new LaCarte();
         table = restaurant.newTable();
         menuItem1 = new Dish("Spaghetti Bolognese", 10.99, new Ingredient[]{new Ingredient("Spaghetti",
