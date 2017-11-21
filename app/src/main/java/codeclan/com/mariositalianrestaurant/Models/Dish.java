@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class Dish extends LaCarteItem {
     private String name;
     private double price;
+
     private Ingredient[] ingredients;
 
     public Dish(String name, double price, Ingredient[] ingredients) {
@@ -35,5 +36,23 @@ public class Dish extends LaCarteItem {
         ingredientArrayList.add(ingredient);
     }
 
+    private void setIngredients(Ingredient[] ingredients) {
+        this.ingredients = ingredients;
+    }
 
+
+    public void customize(Ingredient ingredient) {
+        ArrayList<Ingredient> ingredientsArrayList = new ArrayList<>(Arrays.asList(this.ingredients));
+        ingredientsArrayList.remove(ingredient);
+        Ingredient[] newIngredients = ingredientsArrayList.toArray(new Ingredient[ingredientsArrayList.size()]);
+        this.setIngredients(newIngredients);
+    }
+
+    public void customize(Ingredient ingredientToRemove, Ingredient replacementIngredient) {
+        ArrayList<Ingredient> ingredientsArrayList = new ArrayList<>(Arrays.asList(this.ingredients));
+        ingredientsArrayList.remove(ingredientToRemove);
+        ingredientsArrayList.add(replacementIngredient);
+        Ingredient[] newIngredients = ingredientsArrayList.toArray(new Ingredient[ingredientsArrayList.size()]);
+        this.setIngredients(newIngredients);
+    }
 }
