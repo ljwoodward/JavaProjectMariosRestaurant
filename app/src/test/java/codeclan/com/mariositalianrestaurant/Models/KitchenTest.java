@@ -20,13 +20,16 @@ public class KitchenTest {
         kitchen = new Kitchen();
         ingredient1 = new Ingredient("Spaghetti", 50);
         ingredient2 = new Ingredient("Mince", 1);
+        kitchen.addToPantry(ingredient1);
+        kitchen.addToPantry(ingredient2);
     }
 
     @Test
     public void testAddToPantry() {
-        kitchen.addToPantry(ingredient1);
-        kitchen.addToPantry(ingredient2);
-        int actual = kitchen.getPantry().size();
+        Kitchen newKitchen = new Kitchen();
+        newKitchen.addToPantry(ingredient1);
+        newKitchen.addToPantry(ingredient2);
+        int actual = newKitchen.getPantry().size();
         assertEquals(2, actual);
     }
 }
