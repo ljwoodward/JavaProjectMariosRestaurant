@@ -97,12 +97,6 @@ public class TableTest {
     }
 
     @Test
-    public void testGetIngredients() {
-        String actual = dish1.getIngredientsName();
-        assertEquals("Spaghetti, Mince, ", actual);
-    }
-
-    @Test
     public void testAvailablePortions() {
         int actual = ingredient1.getAvailablePortions();
         assertEquals(47, actual);
