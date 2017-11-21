@@ -92,7 +92,7 @@ class Table {
 
     public Patron newPatron() {
         int patronNumber = this.patrons.size() +1;
-        String patronName = "Patron " + Integer.toString(patronNumber);
+        String patronName = this.name + ", Patron " + Integer.toString(patronNumber);
         Patron patron = new Patron(patronName);
         this.patrons.add(patron);
         return patron;

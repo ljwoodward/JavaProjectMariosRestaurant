@@ -39,7 +39,7 @@ class Patron {
 
     public void orderDishFromMenu(Dish item) {
          this.order.add(item);
-         for (Ingredient ingredient : item.ingredients) {
+         for (Ingredient ingredient : item.getIngredients()) {
              int newPortions = ingredient.getAvailablePortions() - 1;
              ingredient.setAvailablePortions(newPortions);
          }

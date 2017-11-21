@@ -1,6 +1,7 @@
 package codeclan.com.mariositalianrestaurant.Models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by janemackay on 18/11/2017.
@@ -9,13 +10,17 @@ import java.util.ArrayList;
 public class Dish extends LaCarteItem {
     private String name;
     private double price;
-    protected ArrayList<Ingredient> ingredients;
+    private Ingredient[] ingredients;
 
-    public Dish(String name, double price) {
+    public Dish(String name, double price, Ingredient[] ingredients) {
         super(name, price);
-        this.ingredients = new ArrayList<Ingredient>();
+//        this.ingredients = new ArrayList(Arrays.asList(ingredients));
+        this.ingredients = ingredients;
     }
 
+    public Ingredient[] getIngredients() {
+        return ingredients;
+    }
 
     public String getIngredientsName() {
         String ingredientList = "";
@@ -26,6 +31,9 @@ public class Dish extends LaCarteItem {
     }
 
     public void addIngredient(Ingredient ingredient) {
-        this.ingredients.add(ingredient);
+        ArrayList<Ingredient> ingredientArrayList = new ArrayList<>(Arrays.asList(this.ingredients));
+        ingredientArrayList.add(ingredient);
     }
+
+
 }

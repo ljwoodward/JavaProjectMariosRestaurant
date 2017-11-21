@@ -3,6 +3,8 @@ package codeclan.com.mariositalianrestaurant.Models;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -37,13 +39,12 @@ public class TableTest {
         ingredient1 = new Ingredient("Spaghetti", 50);
         ingredient2 = new Ingredient("Mince", 9);
         ingredient3 = new Ingredient("Pancetta", 1);
-        dish1 = new Dish("Spaghetti Bolognese", 9.99);
-        dish2 = new Dish("Spaghetti Carbonara", 10.99);
-        dish3 = new Dish("Garlic Bread", 2.02);
-        dish1.addIngredient(ingredient1);
-        dish1.addIngredient(ingredient2);
-        dish2.addIngredient(ingredient1);
-        dish2.addIngredient(ingredient3);
+        Ingredient[] bologneseIngredients = { ingredient1, ingredient2 };
+        Ingredient[] carbonaraIngredients = { ingredient1, ingredient3};
+        dish1 = new Dish("Spaghetti Bolognese", 9.99, bologneseIngredients);
+        dish2 = new Dish("Spaghetti Carbonara", 10.99, carbonaraIngredients);
+        dish3 = new Dish("Garlic Bread", 2.02, new Ingredient[]{new Ingredient("Garlic",
+                8), new Ingredient("Bread", 12)});
         menu.addToMenu(dish1);
         menu.addToMenu(dish2);
         menu.addToMenu(dish3);
@@ -84,7 +85,7 @@ public class TableTest {
     public void testGetOrder() {
         table1.tableOrder();
         String actual = table1.getOrderList();
-        assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n", actual);
+        assertEquals("Table 1:\nSpaghetti Bolognese\nSpaghetti Carbonara\n", actual);
     }
 
     @Test
@@ -92,7 +93,7 @@ public class TableTest {
         patron1.orderDishFromMenu(dish2);
         table1.tableOrder();
         String actual = table1.getOrderList();
-        assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\nSpaghetti Carbonara\n", actual);
+        assertEquals("Table 1:\nSpaghetti Bolognese\nSpaghetti Carbonara\nSpaghetti Carbonara\n", actual);
     }
 
     @Test
@@ -125,6 +126,6 @@ public class TableTest {
     @Test
     public void testSplitBillByPatron() {
         String actual = table1.splitBillByPatron();
-        assertEquals("Patron 1: 9.99\nPatron 2: 10.99\n", actual);
+        assertEquals("Table 1, Patron 1: 9.99\nTable 1, Patron 2: 10.99\n", actual);
     }
 }

@@ -35,10 +35,12 @@ public class RestaurantTest {
         ingredient1 = new Ingredient("Mince", 12);
         ingredient2 = new Ingredient("Spaghetti", 80);
         ingredient3 = new Ingredient("Pancetta", 4);
-        dish1 = new Dish("Spaghetti Bolognese", 10.99);
+        Ingredient[] bologneseIngredients = { ingredient1, ingredient2 };
+        Ingredient[] carbonaraIngredients = { ingredient1, ingredient3};
+        dish1 = new Dish("Spaghetti Bolognese", 10.99, bologneseIngredients);
         dish1.addIngredient(ingredient1);
         dish1.addIngredient(ingredient2);
-        dish2 = new Dish("Spaghetti Carbonara", 9.99);
+        dish2 = new Dish("Spaghetti Carbonara", 9.99, carbonaraIngredients);
         dish2.addIngredient(ingredient2);
         dish2.addIngredient(ingredient3);
         menu.addToMenu(dish1);
@@ -68,7 +70,7 @@ public class RestaurantTest {
     public void testGetTablesList() {
 
         String actual = restaurant.getTablesList();
-        assertEquals("Table 0:\nSpaghetti Bolognese\nSpaghetti Carbonara\n\nTable 1:\nSpaghetti Carbonara\n\n", actual);
+        assertEquals("Table 1:\nSpaghetti Bolognese\nSpaghetti Carbonara\n\nTable 2:\nSpaghetti Carbonara\n\n", actual);
     }
 
     @Test

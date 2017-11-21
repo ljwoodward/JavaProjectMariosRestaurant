@@ -26,8 +26,11 @@ public class PatronTest {
         restaurant = new Restaurant("Mario's", menu);
         menu = new LaCarte();
         table = restaurant.newTable();
-        menuItem1 = new Dish("Spaghetti Bolognese", 10.99);
-        menuItem2= new Dish("Bruschetta", 4.50);
+        menuItem1 = new Dish("Spaghetti Bolognese", 10.99, new Ingredient[]{new Ingredient("Spaghetti",
+                8), new Ingredient("Mince", 12)});
+        Ingredient[] bruschettaIngredients = new Ingredient[] {new Ingredient("Bread", 55),
+                new Ingredient("Tomato", 25)};
+        menuItem2= new Dish("Bruschetta", 4.50, bruschettaIngredients);
         patron = new Patron("patron");
         table.addPatronToTable(patron);
     }
