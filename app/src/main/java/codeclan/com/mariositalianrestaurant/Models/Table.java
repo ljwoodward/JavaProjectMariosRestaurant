@@ -13,17 +13,12 @@ class Table {
 
     protected ArrayList<Patron> patrons;
     private ArrayList<LaCarteItem> order;
-    private Restaurant restaurant;
     private String name;
 
-    public Table(Restaurant restaurant) {
+    public Table(String name) {
         this.patrons = new ArrayList<>();
         this.order = new ArrayList<>();
-        this.restaurant = restaurant;
-
-        int tableNumber = this.restaurant.getTables().size();
-        String tableName = "Table " + Integer.toString(tableNumber);
-        this.name = tableName;
+        this.name = name;
     }
 
 

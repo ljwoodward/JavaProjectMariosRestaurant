@@ -24,7 +24,10 @@ public class Restaurant {
     }
 
     public Table newTable() {
-        Table table = new Table(this);
+        int tableNumber = this.getTables().size();
+        String tableName = "Table " + Integer.toString(tableNumber);
+        this.name = tableName;
+        Table table = new Table(tableName);
         this.tables.add(table);
         return table;
     }

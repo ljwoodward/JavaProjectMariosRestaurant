@@ -29,8 +29,8 @@ public class TableTest {
     public void setUp() {
         menu = new LaCarte();
         restaurant = new Restaurant("Mario's", menu);
-        table1 = new Table(restaurant);
-        table2 = new Table(restaurant);
+        table1 = restaurant.newTable();
+        table2 = restaurant.newTable();
         patron1 = new Patron("Duncan");
         patron2 = new Patron("Rita");
         patron3 = new Patron("Brian");

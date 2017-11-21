@@ -25,7 +25,7 @@ public class PatronTest {
     public void before() {
         restaurant = new Restaurant("Mario's", menu);
         menu = new LaCarte();
-        table = new Table(restaurant);
+        table = restaurant.newTable();
         menuItem1 = new Dish("Spaghetti Bolognese", 10.99);
         menuItem2= new Dish("Bruschetta", 4.50);
         patron = new Patron("patron");
