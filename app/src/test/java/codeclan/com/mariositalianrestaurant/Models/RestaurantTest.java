@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class RestaurantTest {
+
     Table table1;
     Table table2;
     Patron patron1;
@@ -48,6 +49,7 @@ public class RestaurantTest {
         patron1.orderDishFromMenu(dish1);
         patron2.orderDishFromMenu(dish2);
         patron3.orderDishFromMenu(dish2);
+        restaurant.addToTill(1000.00);
 
     }
 
@@ -63,7 +65,7 @@ public class RestaurantTest {
         double amount = 55.55;
         restaurant.addToTill(amount);
         double actual = restaurant.getTill();
-        assertEquals(55.55, actual, 0.0);
+        assertEquals(1055.55, actual, 0.0);
     }
 
     @Test
@@ -90,8 +92,46 @@ public class RestaurantTest {
     public void testClearTableTillUpdates() {
         restaurant.clearTable(table1);
         double actual = restaurant.getTill();
-        assertEquals(20.98, actual, 0);
+        assertEquals(1020.98, actual, 0);
     }
 
+    @Test
+    public void testAddToNextOrder() {
+        restaurant.addToNextOrder("Spaghetti", 50);
+        int actual = restaurant.getNextOrder().size();
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void testCanOnlyAddItemFromOrderList() {
+        String actual = restaurant.addToNextOrder("Tongue", 12);
+        assertEquals("Not on list", actual);
+    }
+
+    @Test
+    public void testAddToPendingDeliveries() {
+        StockOrder order = new StockOrder();
+        order.addToOrder(ingredient1);
+        order.addToOrder(ingredient2);
+        restaurant.addPendingDelivery(order);
+        int actual = restaurant.getPendingOrders().size();
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void testMakeOrderOrderIsPending() {
+
+        restaurant.makeOrder();
+        int actual = restaurant.getPendingOrders().size();
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void testMakeOrderPriceIsDebited() {
+        restaurant.addToNextOrder("Spaghetti", 50);
+        restaurant.makeOrder();
+        double actual = restaurant.getTill();
+        assertEquals(972.00, actual, 0);
+    }
 
 }

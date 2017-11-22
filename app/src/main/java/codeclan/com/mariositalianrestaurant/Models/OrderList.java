@@ -10,15 +10,15 @@ import java.util.HashMap;
 
 public class OrderList {
 
-    public HashMap<String, Double> orderList;
+    public HashMap<String, Double> ingredientList;
 
     public OrderList() {
-        this.orderList = new HashMap<>();
-        orderList.put("Spaghetti", 0.56);
-        orderList.put("Mince", 2.25);
-        orderList.put("Tomatoes", 0.15);
-        orderList.put("Garlic", 0.09);
-        orderList.put("Parmesan", 0.39);
+        this.ingredientList = new HashMap<>();
+        ingredientList.put("Spaghetti", 0.56);
+        ingredientList.put("Mince", 2.25);
+        ingredientList.put("Tomatoes", 0.15);
+        ingredientList.put("Garlic", 0.09);
+        ingredientList.put("Parmesan", 0.39);
     }
 
 

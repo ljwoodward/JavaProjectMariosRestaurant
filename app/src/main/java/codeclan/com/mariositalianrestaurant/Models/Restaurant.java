@@ -16,6 +16,8 @@ public class Restaurant {
     private LaCarte menu;
     private Kitchen kitchen;
     private ArrayList<StockOrder> pendingOrders;
+    private ArrayList<OrderItem> nextOrder;
+    private OrderList orderList;
 
 
     public Restaurant(String name) {
@@ -25,6 +27,8 @@ public class Restaurant {
         this.menu = new LaCarte();
         this.kitchen = new Kitchen();
         this.pendingOrders = new ArrayList<>();
+        this.orderList = new OrderList();
+        this.nextOrder = new ArrayList<>();
     }
 
     public Table newTable() {
@@ -37,10 +41,6 @@ public class Restaurant {
 
     public void addToTill(double amount) {
         this.till += amount;
-    }
-
-    public void takeFromTill(double amount) {
-        this.till -= amount;
     }
 
     public double getTill() {
@@ -75,7 +75,30 @@ public class Restaurant {
         return this.pendingOrders;
     }
 
+    public String addToNextOrder(String name, int portions) {
+        if (this.orderList.ingredientList.containsKey(name)) {
+            double priceOfItem = this.orderList.ingredientList.get(name);
+            Ingredient ingredient = new Ingredient(name, portions, priceOfItem);
+            this.nextOrder.add(ingredient);
+            return "Added to order";
+        } else {
+            return "Not on list";
+        }
+    }
+
+    public ArrayList<OrderItem> getNextOrder() {
+        return nextOrder;
+    }
 
 
+    public void makeOrder() {
+        StockOrder stockOrder = new StockOrder();
+        for(OrderItem item : this.nextOrder) {
+            stockOrder.addToOrder(item);
+        }
+        this.pendingOrders.add(stockOrder);
+        double price = stockOrder.getTotalPrice();
+        this.till -= price;
+    }
 
 }
