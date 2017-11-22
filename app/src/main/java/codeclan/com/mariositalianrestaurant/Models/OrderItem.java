@@ -24,14 +24,13 @@ abstract class OrderItem {
         return this.portions;
     }
 
-    public double getPricePerPortion() {
-        return this.pricePerPortion;
-    }
-
     public void usePortionOfOrderItem() {
         this.portions--;
     }
 
-
-
+    public double getTotalPrice() {
+        double total = this.pricePerPortion * this.portions;
+        double roundAmount =  Math.round(total * 100.0)/100.0;
+        return roundAmount;
+    }
 }

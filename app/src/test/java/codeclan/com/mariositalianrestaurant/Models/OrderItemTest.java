@@ -32,4 +32,10 @@ public class OrderItemTest {
         int actual = ingredient1.getPortions();
         assertEquals(4, actual);
     }
+
+    @Test
+    public void testGetTotalPriceOfItem() {
+        double actual = ingredient1.getTotalPrice();
+        assertEquals(2.80, actual, 0);
+    }
 }

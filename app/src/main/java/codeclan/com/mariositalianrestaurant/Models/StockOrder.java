@@ -8,19 +8,27 @@ import java.util.ArrayList;
 
 public class StockOrder {
 
-   private ArrayList<Orderable> order;
+   private ArrayList<OrderItem> order;
 
     public StockOrder() {
         this.order = new ArrayList<>();
     }
 
-    public void addToOrder(Orderable orderItem) {
+    public void addToOrder(OrderItem orderItem) {
         this.order.add(orderItem);
     }
 
-    public ArrayList<Orderable> getOrder() {
+    public ArrayList<OrderItem> getOrder() {
         return order;
     }
 
+
+    public double getTotalPrice() {
+        double total = 0;
+        for (OrderItem orderItem : this.order) {
+            total += orderItem.getTotalPrice();
+        }
+        return total;
+    }
 
 }

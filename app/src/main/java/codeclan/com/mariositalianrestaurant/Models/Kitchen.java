@@ -29,6 +29,7 @@ public class Kitchen {
 //    }
 
     private ArrayList<Ingredient> pantry;
+    private ArrayList<StockOrder> pendingOrders;
 
     public Kitchen() {
         this.pantry = new ArrayList<>();
@@ -36,15 +37,20 @@ public class Kitchen {
 
     public void addToPantry(Ingredient ingredient) {
         this.pantry.add(ingredient);
+        this.pendingOrders = new ArrayList<>();
     }
 
     public ArrayList<Ingredient> getPantry() {
         return this.pantry;
     }
 
+    public void addPendingDelivery(StockOrder stockOrder) {
+        this.pendingOrders.add(stockOrder);
+    }
 
-
-
+    public ArrayList<StockOrder> getPendingOrders() {
+        return this.pendingOrders;
+    }
 
 
 }

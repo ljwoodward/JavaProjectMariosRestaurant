@@ -3,6 +3,8 @@ package codeclan.com.mariositalianrestaurant.Models;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -31,5 +33,15 @@ public class KitchenTest {
         newKitchen.addToPantry(ingredient2);
         int actual = newKitchen.getPantry().size();
         assertEquals(2, actual);
+    }
+
+    @Test
+    public void testAddToPendingDeliveries() {
+        StockOrder order = new StockOrder();
+        order.addToOrder(ingredient1);
+        order.addToOrder(ingredient2);
+        kitchen.addPendingDelivery(order);
+        int actual = kitchen.getPendingOrders().size();
+        assertEquals(1, actual);
     }
 }
