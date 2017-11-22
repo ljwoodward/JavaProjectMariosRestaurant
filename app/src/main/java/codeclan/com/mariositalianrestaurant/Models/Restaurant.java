@@ -46,12 +46,10 @@ public class Restaurant {
     }
 
     public String getTablesList() {
-        int count = 1;
         String tableList = "";
         for(Table table : this.tables) {
             table.tableOrder();
             tableList += table.getOrderList() + "\n";
-            count++;
         }
         return tableList;
     }

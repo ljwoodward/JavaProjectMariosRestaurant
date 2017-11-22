@@ -4,25 +4,28 @@ package codeclan.com.mariositalianrestaurant.Models;
  * Created by janemackay on 18/11/2017.
  */
 
-class Ingredient {
+class Ingredient implements Orderable {
 
     private String name;
-    private int availablePortions;
+    private int portions;
 
-    public Ingredient(String name, int availablePortions) {
+    public Ingredient(String name, int portions) {
         this.name = name;
-        this.availablePortions = availablePortions;
+        this.portions = portions;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAvailablePortions() {
-        return availablePortions;
+    public int getPortions() {
+        return portions;
     }
 
     public void setAvailablePortions(int availablePortions) {
-        this.availablePortions = availablePortions;
+        this.portions = availablePortions;
+    }
+
+    public double getPricePerUnit() {
     }
 }
