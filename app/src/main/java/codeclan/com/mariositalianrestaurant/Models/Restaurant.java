@@ -15,6 +15,7 @@ public class Restaurant {
     private ArrayList<Table> tables;
     private LaCarte menu;
     private Kitchen kitchen;
+    private ArrayList<StockOrder> pendingOrders;
 
 
     public Restaurant(String name) {
@@ -23,6 +24,7 @@ public class Restaurant {
         this.tables = new ArrayList<>();
         this.menu = new LaCarte();
         this.kitchen = new Kitchen();
+        this.pendingOrders = new ArrayList<>();
     }
 
     public Table newTable() {
@@ -35,6 +37,10 @@ public class Restaurant {
 
     public void addToTill(double amount) {
         this.till += amount;
+    }
+
+    public void takeFromTill(double amount) {
+        this.till -= amount;
     }
 
     public double getTill() {
@@ -54,11 +60,22 @@ public class Restaurant {
         return tableList;
     }
 
-
     public void clearTable(Table table) {
         table.tableOrder();
         double total = table.getTotalBill();
         this.till += total;
         this.tables.remove(table);
     }
+
+    public void addPendingDelivery(StockOrder stockOrder) {
+        this.pendingOrders.add(stockOrder);
+    }
+
+    public ArrayList<StockOrder> getPendingOrders() {
+        return this.pendingOrders;
+    }
+
+
+
+
 }

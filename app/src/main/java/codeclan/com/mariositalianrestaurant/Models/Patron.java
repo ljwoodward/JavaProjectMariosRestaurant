@@ -25,18 +25,6 @@ class Patron {
          return order;
     }
 
-//    public Table thisTable(){
-//         for(Table table : restaurant.getTables()){
-//             table.patrons.contains(this);
-//
-//         }
-//        return table;
-//
-//    }
-
-
-
-
     public void orderDishFromMenu(Dish dish) {
          this.order.add(dish);
          for (Ingredient ingredient : dish.getIngredients()) {
