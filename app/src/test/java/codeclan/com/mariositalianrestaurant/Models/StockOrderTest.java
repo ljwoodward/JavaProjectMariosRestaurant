@@ -19,7 +19,7 @@ public class StockOrderTest {
     @Before
     public void setUp() {
         stockOrder1 = new StockOrder();
-        ingredient1 = new Ingredient("Spaghetti", 5);
+        ingredient1 = new Ingredient("Spaghetti", 5, 0.56);
     }
 
     @Test
@@ -27,5 +27,10 @@ public class StockOrderTest {
         stockOrder1.addToOrder(ingredient1);
         int actual = stockOrder1.getOrder().size();
         assertEquals(1, actual);
+    }
+
+    @Test
+    public void testOrderItem() {
+
     }
 }

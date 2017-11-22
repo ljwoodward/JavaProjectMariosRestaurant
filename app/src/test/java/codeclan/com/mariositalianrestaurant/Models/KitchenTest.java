@@ -18,8 +18,8 @@ public class KitchenTest {
     @Before
     public void setUp() {
         kitchen = new Kitchen();
-        ingredient1 = new Ingredient("Spaghetti", 50);
-        ingredient2 = new Ingredient("Mince", 1);
+        ingredient1 = new Ingredient("Spaghetti", 50, 0.56);
+        ingredient2 = new Ingredient("Mince", 1, 2.25);
         kitchen.addToPantry(ingredient1);
         kitchen.addToPantry(ingredient2);
     }

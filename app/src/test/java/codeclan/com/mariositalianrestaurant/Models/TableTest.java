@@ -36,15 +36,15 @@ public class TableTest {
         patron1 = table1.newPatron();
         patron2 = table2.newPatron();
         patron3 = table1.newPatron();
-        ingredient1 = new Ingredient("Spaghetti", 50);
-        ingredient2 = new Ingredient("Mince", 9);
-        ingredient3 = new Ingredient("Pancetta", 1);
+        ingredient1 = new Ingredient("Spaghetti", 50, 0.56);
+        ingredient2 = new Ingredient("Mince", 9, 2.25);
+        ingredient3 = new Ingredient("Pancetta", 1, 1.99);
         Ingredient[] bologneseIngredients = { ingredient1, ingredient2 };
         Ingredient[] carbonaraIngredients = { ingredient1, ingredient3};
         dish1 = new Dish("Spaghetti Bolognese", 9.99, bologneseIngredients);
         dish2 = new Dish("Spaghetti Carbonara", 10.99, carbonaraIngredients);
         dish3 = new Dish("Garlic Bread", 2.02, new Ingredient[]{new Ingredient("Garlic",
-                8), new Ingredient("Bread", 12)});
+                8, 0.08), new Ingredient("Bread", 12, 0.25)});
         menu.addToMenu(dish1);
         menu.addToMenu(dish2);
         menu.addToMenu(dish3);
@@ -56,30 +56,18 @@ public class TableTest {
 
     @Test
     public void testAddPatronToTable() {
-        table1.addPatronToTable(new Patron("Bolingbroke"));
+        table1.newPatron();
         int actual = table1.getNumberOfPatrons();
         assertEquals(3, actual);
 
 
     }
 
-
     @Test
     public void testNumberOfPatrons() {
         int actual = table1.getNumberOfPatrons();
         assertEquals(2, actual);
     }
-
-//    @Test
-//    public void testPatronsAreDynamicallyNamed() {
-//        String actual = "";
-//        for(Patron patron : table2.patrons){
-//            String name = patron.getName();
-//            actual += name + " ";
-//        }
-//        assertEquals("patron1 patron2 patron3 patron4 ", actual);
-//
-//    }
 
     @Test
     public void testGetOrder() {
@@ -98,7 +86,7 @@ public class TableTest {
 
     @Test
     public void testAvailablePortions() {
-        int actual = ingredient1.getAvailablePortions();
+        int actual = ingredient1.getPortions();
         assertEquals(47, actual);
     }
 

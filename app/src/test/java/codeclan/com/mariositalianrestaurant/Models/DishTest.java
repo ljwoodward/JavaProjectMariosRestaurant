@@ -21,11 +21,11 @@ public class DishTest {
 
     @Before
     public void setUp() {
-        ingredient1 = new Ingredient("Spaghetti", 50);
-        ingredient2 = new Ingredient("Tomatoes", 45);
-        ingredient3 = new Ingredient("Anchovies", 3);
-        ingredient4 = new Ingredient("Olives", 1);
-        ingredient5 = new Ingredient("Tuna", 4);
+        ingredient1 = new Ingredient("Spaghetti", 50, 0.56);
+        ingredient2 = new Ingredient("Tomatoes", 45, 0.15);
+        ingredient3 = new Ingredient("Anchovies", 3, 1.19);
+        ingredient4 = new Ingredient("Olives", 1, 0.49);
+        ingredient5 = new Ingredient("Tuna", 4, 0.99);
         ingredients = new Ingredient[] {ingredient1, ingredient2, ingredient3, ingredient4};
         dish1 = new Dish("Spaghetti Alla Putanesca", 8.99, ingredients);
 

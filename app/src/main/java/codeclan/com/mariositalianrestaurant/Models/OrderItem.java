@@ -27,4 +27,11 @@ abstract class OrderItem {
     public double getPricePerPortion() {
         return this.pricePerPortion;
     }
+
+    public void usePortionOfOrderItem() {
+        this.portions--;
+    }
+
+
+
 }

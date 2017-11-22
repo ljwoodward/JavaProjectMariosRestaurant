@@ -32,9 +32,9 @@ public class RestaurantTest {
         patron2 = table2.newPatron();
         patron3 = table1.newPatron();
         menu = new LaCarte();
-        ingredient1 = new Ingredient("Mince", 12);
-        ingredient2 = new Ingredient("Spaghetti", 80);
-        ingredient3 = new Ingredient("Pancetta", 4);
+        ingredient1 = new Ingredient("Mince", 12, 2.25);
+        ingredient2 = new Ingredient("Spaghetti", 80, 0.56);
+        ingredient3 = new Ingredient("Pancetta", 4, 1.99);
         Ingredient[] bologneseIngredients = { ingredient1, ingredient2 };
         Ingredient[] carbonaraIngredients = { ingredient1, ingredient3};
         dish1 = new Dish("Spaghetti Bolognese", 10.99, bologneseIngredients);
