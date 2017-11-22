@@ -64,4 +64,26 @@ public class Kitchen {
         this.currentOrders.add(order);
     }
 
+    private Ingredient getIngredient(String name) {
+        Ingredient ingredientToGet = null;
+        for (Ingredient ingredient : this.pantry) {
+            if (ingredient.getName() == name) {
+                ingredientToGet = ingredient;
+            }
+        }
+        return ingredientToGet;
+    }
+
+    public void prepareOrder(ArrayList<LaCarteItem> orderToPrepare) {
+        for (ArrayList<LaCarteItem> order : this.currentOrders) {
+            if (order == orderToPrepare){
+                for (LaCarteItem dish : orderToPrepare) {
+                    for (Ingredient ingredient : dish.getIngredientsList()) {
+                        Ingredient ingredientToUpdate = this.getIngredient(ingredient.getName());
+                        ingredientToUpdate.usePortionOfOrderItem();
+                    }
+                }
+            }
+        }
+    }
 }

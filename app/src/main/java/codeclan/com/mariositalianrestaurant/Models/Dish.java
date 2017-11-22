@@ -10,14 +10,15 @@ import java.util.Arrays;
 public class Dish extends LaCarteItem {
     private String name;
     private double price;
-
     private Ingredient[] ingredients;
+
 
     public Dish(String name, double price, Ingredient[] ingredients) {
         super(name, price);
 //        this.ingredients = new ArrayList(Arrays.asList(ingredients));
         this.ingredients = ingredients;
     }
+
 
     public Ingredient[] getIngredients() {
         return ingredients;
