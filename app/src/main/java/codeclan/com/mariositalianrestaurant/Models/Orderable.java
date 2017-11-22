@@ -5,4 +5,5 @@ package codeclan.com.mariositalianrestaurant.Models;
  */
 
 interface Orderable {
+
 }

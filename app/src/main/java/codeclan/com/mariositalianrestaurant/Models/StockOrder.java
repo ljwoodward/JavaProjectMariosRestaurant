@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class StockOrder {
 
-    private ArrayList<Orderable> order;
+   private ArrayList<Orderable> order;
 
     public StockOrder() {
         this.order = new ArrayList<>();
@@ -17,4 +17,10 @@ public class StockOrder {
     public void addToOrder(Orderable orderItem) {
         this.order.add(orderItem);
     }
+
+    public ArrayList<Orderable> getOrder() {
+        return order;
+    }
+
+
 }
