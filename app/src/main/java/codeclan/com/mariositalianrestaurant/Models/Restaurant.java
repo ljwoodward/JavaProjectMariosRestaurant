@@ -14,7 +14,7 @@ public class Restaurant {
     private double till;
     private ArrayList<Table> tables;
     private LaCarte menu;
-    private Kitchen kitchen;
+    protected Kitchen kitchen;
     private ArrayList<StockOrder> pendingOrders;
     private ArrayList<OrderItem> nextOrder;
     private OrderList orderList;
@@ -101,4 +101,8 @@ public class Restaurant {
         this.till -= price;
     }
 
+    public void sendOrderToKitchen(Table table) {
+        ArrayList<LaCarteItem> order = table.tableOrder();
+        this.kitchen.addOrder(order);
+    }
 }

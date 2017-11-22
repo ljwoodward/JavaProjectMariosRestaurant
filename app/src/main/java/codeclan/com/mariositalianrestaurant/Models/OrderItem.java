@@ -33,4 +33,8 @@ abstract class OrderItem {
         double roundAmount =  Math.round(total * 100.0)/100.0;
         return roundAmount;
     }
+
+    public void increasePortion(int numberOfPortions) {
+        this.portions += numberOfPortions;
+    }
 }

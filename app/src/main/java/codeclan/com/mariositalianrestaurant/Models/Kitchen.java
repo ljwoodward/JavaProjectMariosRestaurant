@@ -29,14 +29,30 @@ public class Kitchen {
 //    }
 
     private ArrayList<Ingredient> pantry;
+    private ArrayList<ArrayList<LaCarteItem>> currentOrders;
 
 
     public Kitchen() {
         this.pantry = new ArrayList<>();
+        this.currentOrders = new ArrayList<>();
     }
 
-    public void addToPantry(Ingredient ingredient) {
-        this.pantry.add(ingredient);
+    public void addToPantry(Ingredient newIngredient) {
+        boolean isAlreadyThere = false;
+        OrderItem itemToUpdate = null;
+        for (OrderItem orderItem : this.getPantry()){
+            if (orderItem.getName() == newIngredient.getName()) {
+                isAlreadyThere = true;
+                itemToUpdate = orderItem;
+            } else {
+                isAlreadyThere = false;
+            }
+        }
+        if(isAlreadyThere == true) {
+            itemToUpdate.increasePortion(newIngredient.getPortions());
+        } else if (isAlreadyThere == false) {
+            this.pantry.add(newIngredient);
+        }
     }
 
     public ArrayList<Ingredient> getPantry() {
@@ -44,8 +60,8 @@ public class Kitchen {
     }
 
 
-
-
-
+    public void addOrder(ArrayList<LaCarteItem> order) {
+        this.currentOrders.add(order);
+    }
 
 }

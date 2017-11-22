@@ -14,28 +14,18 @@ class Table {
     protected ArrayList<Patron> patrons;
     private ArrayList<LaCarteItem> order;
     private String name;
+    private double bill;
+
 
     public Table(String name) {
         this.patrons = new ArrayList<>();
         this.order = new ArrayList<>();
         this.name = name;
+        this.bill = 0;
     }
 
 
-//    public Table(int numberOfPatrons) {
-//
-//        this.patrons = new ArrayList<Patron>();
-//        this.order = new ArrayList<LaCarteItem>();
-//        this.numberOfPatrons = numberOfPatrons;
-//
-//        for(int number = 1; number < numberOfPatrons + 1; number++) {
-//            String designator = Integer.toString(number);
-//            Patron patron = new Patron("patron" + designator);
-//            this.addPatronToTable(patron);
-//        }
-//
-//}
-    public void addPatronToTable(Patron patron) {
+     public void addPatronToTable(Patron patron) {
         this.patrons.add(patron);
     }
 
@@ -56,12 +46,13 @@ class Table {
         return name;
     }
 
-    public void tableOrder() {
+    public ArrayList<LaCarteItem> tableOrder() {
         for(Patron patron : this.patrons) {
             for (LaCarteItem menuItem : patron.getOrder()) {
                 this.order.add(menuItem);
             }
         }
+        return this.order;
     }
 
     public double getTotalBill() {

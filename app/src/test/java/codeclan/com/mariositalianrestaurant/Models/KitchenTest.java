@@ -35,5 +35,16 @@ public class KitchenTest {
         assertEquals(2, actual);
     }
 
-
+    @Test
+    public void testAddToPantryWhenAlreadyThere() {
+        Ingredient ingredient = new Ingredient("Mince", 9, 2.25);
+        kitchen.addToPantry(ingredient);
+        int actual = 0;
+        for (Ingredient item : kitchen.getPantry()){
+            if (item.getName() == "Mince"){
+                actual += item.getPortions();
+            }
+        }
+        assertEquals(10, actual);
+    }
 }

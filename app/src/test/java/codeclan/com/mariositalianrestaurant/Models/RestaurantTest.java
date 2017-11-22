@@ -2,6 +2,9 @@ package codeclan.com.mariositalianrestaurant.Models;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -30,8 +33,8 @@ public class RestaurantTest {
         table1 = restaurant.newTable();
         table2 = restaurant.newTable();
         patron1 = table1.newPatron();
-        patron2 = table2.newPatron();
-        patron3 = table1.newPatron();
+        patron2 = table1.newPatron();
+        patron3 = table2.newPatron();
         menu = new LaCarte();
         ingredient1 = new Ingredient("Mince", 12, 2.25);
         ingredient2 = new Ingredient("Spaghetti", 80, 0.56);
@@ -132,6 +135,21 @@ public class RestaurantTest {
         restaurant.makeOrder();
         double actual = restaurant.getTill();
         assertEquals(972.00, actual, 0);
+    }
+
+    @Test
+    public void testsendOrderToKitchen() {
+        ArrayList<LaCarteItem> order = table1.tableOrder();
+        restaurant.sendOrderToKitchen(table1);
+        restaurant.kitchen.prepareOrder(order);
+        ArrayList<Ingredient> pantry = new ArrayList<>(restaurant.kitchen.getPantry());
+        int actual = 0;
+        for (Ingredient ingredient : pantry) {
+            if (ingredient.getName() == "Spaghetti") {
+                actual += ingredient.getPortions();
+            }
+        }
+        assertEquals(12, actual);
     }
 
 }

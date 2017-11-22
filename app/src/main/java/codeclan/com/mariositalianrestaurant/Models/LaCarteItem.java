@@ -8,10 +8,12 @@ public abstract class LaCarteItem {
 
     String name;
     double price;
+    int portions;
 
-    public LaCarteItem(String name, double price) {
+    public LaCarteItem(String name, double price, int portions) {
         this.name = name;
         this.price = price;
+        this.portions = portions;
     }
 
 
