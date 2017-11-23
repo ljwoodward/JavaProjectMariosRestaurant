@@ -47,4 +47,10 @@ public class KitchenTest {
         }
         assertEquals(10, actual);
     }
+
+    @Test
+    public void testGetIngredient() {
+        Ingredient actual = kitchen.getIngredient("Spaghetti");
+        assertEquals(ingredient1, actual);
+    }
 }

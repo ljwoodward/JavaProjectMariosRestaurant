@@ -9,7 +9,7 @@ import java.util.ArrayList;
 class Patron {
 
     private String name;
-    private ArrayList<LaCarteItem> order;
+    private ArrayList<Dish> order;
 
 
     public Patron(String name) {
@@ -21,7 +21,7 @@ class Patron {
         return name;
     }
 
-    public ArrayList<LaCarteItem> getOrder() {
+    public ArrayList<Dish> getOrder() {
          return order;
     }
 
@@ -34,16 +34,16 @@ class Patron {
 
     public String getOrderList() {
          String orderList = "";
-         for(LaCarteItem menuItem : this.order) {
-             orderList += menuItem.getName() + "\n";
+         for(Dish dish : this.order) {
+             orderList += dish.getName() + "\n";
          }
          return orderList;
     }
 
     public double getCostOfOrder() {
         double cost = 0;
-        for (LaCarteItem menuItem : this.order) {
-            cost += menuItem.getPrice();
+        for (Dish dish : this.order) {
+            cost += dish.getPrice();
         }
         return cost;
     }

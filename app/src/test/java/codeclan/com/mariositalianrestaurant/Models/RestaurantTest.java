@@ -138,18 +138,30 @@ public class RestaurantTest {
     }
 
     @Test
-    public void testsendOrderToKitchen() {
-        ArrayList<LaCarteItem> order = table1.tableOrder();
+    public void testSendOrderToKitchen() {
         restaurant.sendOrderToKitchen(table1);
-        restaurant.kitchen.prepareOrder(order);
-        ArrayList<Ingredient> pantry = new ArrayList<>(restaurant.kitchen.getPantry());
-        int actual = 0;
-        for (Ingredient ingredient : pantry) {
-            if (ingredient.getName() == "Spaghetti") {
-                actual += ingredient.getPortions();
-            }
-        }
-        assertEquals(12, actual);
+        int actual = restaurant.kitchen.getCurrentOrders().size();
+        assertEquals(1, actual);
     }
+//    @Test
+//    public void testsendOrderToKitchen() {
+//        restaurant.sendOrderToKitchen(table1);
+//        restaurant.kitchen.prepareOrder(table1.tableOrder());
+//        ArrayList<Ingredient> pantry = new ArrayList<>(restaurant.kitchen.getPantry());
+//        int actual = 0;
+//        for (Ingredient ingredient : pantry) {
+//            if (ingredient.getName() == "Spaghetti") {
+//                actual += ingredient.getPortions();
+//            }
+//        }
+//        assertEquals(12, actual);
+//    }
+//
+//    @Test
+//    public void testSentOrderToKitchenString() {
+//        restaurant.sendOrderToKitchen(table1);
+//        String actual = restaurant.kitchen.prepareOrder(table1.tableOrder());
+//        assertEquals("Order being prepared", actual);
+//    }
 
 }

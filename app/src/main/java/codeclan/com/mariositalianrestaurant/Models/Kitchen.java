@@ -29,7 +29,7 @@ public class Kitchen {
 //    }
 
     private ArrayList<Ingredient> pantry;
-    private ArrayList<ArrayList<LaCarteItem>> currentOrders;
+    private ArrayList<ArrayList<Dish>> currentOrders;
 
 
     public Kitchen() {
@@ -60,13 +60,17 @@ public class Kitchen {
     }
 
 
-    public void addOrder(ArrayList<LaCarteItem> order) {
+    public void addOrder(ArrayList<Dish> order) {
         this.currentOrders.add(order);
     }
 
-    private Ingredient getIngredient(String name) {
+    public ArrayList<ArrayList<Dish>> getCurrentOrders() {
+        return this.currentOrders;
+    }
+
+    public Ingredient getIngredient(String name) {
         Ingredient ingredientToGet = null;
-        for (Ingredient ingredient : this.pantry) {
+        for (Ingredient ingredient : pantry) {
             if (ingredient.getName() == name) {
                 ingredientToGet = ingredient;
             }
@@ -74,16 +78,21 @@ public class Kitchen {
         return ingredientToGet;
     }
 
-    public void prepareOrder(ArrayList<LaCarteItem> orderToPrepare) {
-        for (ArrayList<LaCarteItem> order : this.currentOrders) {
-            if (order == orderToPrepare){
-                for (LaCarteItem dish : orderToPrepare) {
-                    for (Ingredient ingredient : dish.getIngredientsList()) {
-                        Ingredient ingredientToUpdate = this.getIngredient(ingredient.getName());
-                        ingredientToUpdate.usePortionOfOrderItem();
-                    }
-                }
-            }
-        }
-    }
+//    public String prepareOrder(ArrayList<Dish> orderToPrepare) {
+//        String returnStatement = "";
+//        for (ArrayList<Dish> order : this.currentOrders) {
+//            if (order == orderToPrepare){
+//                for (Dish dish : orderToPrepare) {
+//                    for (Ingredient ingredient : dish.getIngredientsList()) {
+//                        Ingredient ingredientToUpdate = this.getIngredient(ingredient.getName());
+//                        ingredientToUpdate.usePortionOfOrderItem();
+//                    }
+//                } returnStatement+= "Order being prepared";
+//            } else {
+//                returnStatement += "Error";
+//            }
+//
+//        }
+//        return returnStatement;
+//    }
 }

@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 class LaCarte {
 
-    private ArrayList<LaCarteItem> menu;
+    private ArrayList<Dish> menu;
 
     public LaCarte() {
         this.menu = new ArrayList<>();
     }
 
-    public void addToMenu(LaCarteItem menuItem) {
-        this.menu.add(menuItem);
+    public void addToMenu(Dish dish) {
+        this.menu.add(dish);
     }
 
 }

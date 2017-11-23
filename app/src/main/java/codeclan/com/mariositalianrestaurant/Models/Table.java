@@ -1,8 +1,5 @@
 package codeclan.com.mariositalianrestaurant.Models;
 
-import android.view.MenuItem;
-
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -12,14 +9,14 @@ import java.util.ArrayList;
 class Table {
 
     protected ArrayList<Patron> patrons;
-    private ArrayList<LaCarteItem> order;
+    private ArrayList<Dish> foodOrder;
     private String name;
     private double bill;
 
 
     public Table(String name) {
         this.patrons = new ArrayList<>();
-        this.order = new ArrayList<>();
+        this.foodOrder = new ArrayList<>();
         this.name = name;
         this.bill = 0;
     }
@@ -32,8 +29,8 @@ class Table {
      public String getOrderList() {
         String orderString = this.getName() + ":\n";
 
-        for(LaCarteItem menuItem : this.order) {
-            orderString += menuItem.getName() + "\n";
+        for(Dish dish : this.foodOrder) {
+            orderString += dish.getName() + "\n";
         }
         return orderString;
     }
@@ -46,19 +43,19 @@ class Table {
         return name;
     }
 
-    public ArrayList<LaCarteItem> tableOrder() {
+    public ArrayList<Dish> tableOrder() {
         for(Patron patron : this.patrons) {
-            for (LaCarteItem menuItem : patron.getOrder()) {
-                this.order.add(menuItem);
+            for (Dish dish : patron.getOrder()) {
+                this.foodOrder.add(dish);
             }
         }
-        return this.order;
+        return this.foodOrder;
     }
 
     public double getTotalBill() {
         double total = 0;
-        for (LaCarteItem menuItem : this.order) {
-            double amount = menuItem.getPrice();
+        for (Dish dish : this.foodOrder) {
+            double amount = dish.getPrice();
             total += amount;
         }
         return total;

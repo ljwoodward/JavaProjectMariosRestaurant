@@ -51,4 +51,10 @@ public class DishTest {
         assertEquals("Spaghetti, Tomatoes, Olives, Tuna, ", actual);
     }
 
+    @Test
+    public void testGetIngredientsList() {
+        int actual = dish1.getIngredientsList().size();
+        assertEquals(4, actual);
+    }
+
 }

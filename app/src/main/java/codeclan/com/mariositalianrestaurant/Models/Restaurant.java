@@ -102,7 +102,7 @@ public class Restaurant {
     }
 
     public void sendOrderToKitchen(Table table) {
-        ArrayList<LaCarteItem> order = table.tableOrder();
+        ArrayList<Dish> order = table.tableOrder();
         this.kitchen.addOrder(order);
     }
 }
